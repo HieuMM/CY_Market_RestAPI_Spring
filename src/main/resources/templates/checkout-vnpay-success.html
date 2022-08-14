@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{https://cdn.tailwindcss.com}"></script>
+</head>
+<body>
+<div class="text-center mb-4">
+    <h1 class = "text-2xl mb-4 font-sans ">
+        Giao dịch được thực hiện thành công. Cảm ơn quý khách đã sử dụng dịch vụ
+    </h1>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table
+                class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        >
+            <thead
+                    class="
+              text-xs text-gray-700
+              uppercase
+              bg-gray-50
+              dark:bg-gray-700 dark:text-gray-400
+            "
+            >
+            <tr>
+                <th scope="col" class="px-6 py-3">Name</th>
+                <th scope="col" class="px-6 py-3">Value</th>
+                <th scope="col" class="px-6 py-3">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th
+                        scope="row"
+                        class="
+                  px-6
+                  py-4
+                  font-medium
+                  text-gray-900
+                  dark:text-white
+                  whitespace-nowrap
+                "
+                >
+                    Merchant ID
+                </th>
+                <td class="px-6 py-4">
+<!--                    {{ vnp_TmnCode }}-->
+                </td>
+                <td class="px-6 py-4">Được cấp bởi VNPAY</td>
+            </tr>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th
+                        scope="row"
+                        class="
+                  px-6
+                  py-4
+                  font-medium
+                  text-gray-900
+                  dark:text-white
+                  whitespace-nowrap
+                "
+                >
+                    Merchant Transaction Reference
+                </th>
+                <td class="px-6 py-4">
+<!--                    {{ vnp_TransactionNo }}-->
+                </td>
+                <td class="px-6 py-4">Mã GD của website merchant</td>
+            </tr>
+            <tr class="bg-white dark:bg-gray-800">
+                <th
+                        scope="row"
+                        class="
+                  px-6
+                  py-4
+                  font-medium
+                  text-gray-900
+                  dark:text-white
+                  whitespace-nowrap
+                "
+                >
+                    Transaction Info
+                </th>
+                <td class="px-6 py-4">
+<!--                    Thanh toan don hang thoi gian: {{ vnp_OrderInfo }}-->
+                </td>
+                <td class="px-6 py-4">Thông tin mô tả từ website merchant</td>
+            </tr>
+            <tr class="bg-white dark:bg-gray-800">
+                <th
+                        scope="row"
+                        class="
+                  px-6
+                  py-4
+                  font-medium
+                  text-gray-900
+                  dark:text-white
+                  whitespace-nowrap
+                "
+                >
+                    Amount
+                </th>
+                <td class="px-6 py-4">
+<!--                    {{ vnp_Amount }}-->
+                </td>
+                <td class="px-6 py-4">Số tiền được thanh toán</td>
+            </tr>
+            <tr class="bg-white dark:bg-gray-800">
+                <th
+                        scope="row"
+                        class="
+                  px-6
+                  py-4
+                  font-medium
+                  text-gray-900
+                  dark:text-white
+                  whitespace-nowrap
+                "
+                >
+                    Current Code
+                </th>
+                <td class="px-6 py-4">VND</td>
+                <td class="px-6 py-4">Đơn vị tiền tệ được thanh toán</td>
+            </tr>
+            <tr class="bg-white dark:bg-gray-800">
+                <th
+                        scope="row"
+                        class="
+                  px-6
+                  py-4
+                  font-medium
+                  text-gray-900
+                  dark:text-white
+                  whitespace-nowrap
+                "
+                >
+                    Bank
+                </th>
+                <td class="px-6 py-4">
+<!--                    {{ vnp_BankCode }}-->
+                </td>
+                <td class="px-6 py-4">Ngân hàng GD</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

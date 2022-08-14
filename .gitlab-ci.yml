@@ -1,0 +1,31 @@
+variables:
+  TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA #unix id
+  JAR: "jar"
+  NGINX: "nginx"
+
+stages:
+  - deploy
+deploy:
+  stage: deploy
+  tags:
+    - spring
+  only:
+    - /^dev_[0-9]+(?:.[0-9]+)+$/ # regular expression dev_0.0.1, dev_0.0.2, dev_0.0.3, etc.
+  script:
+    - echo "Building Jar"
+#    - mv ./src/main/resources/application.prod.properties ./src/main/resources/application.properties
+    - chmod +x mvnw
+    - ./mvnw clean install -DskipTests #build file jar
+    - echo "Build Jar Image" #start build image jar
+    - docker build -t $TAG_COMMIT$JAR . #build image jar
+    - echo "Build Nginx Image" #start build image nginx
+    - docker build -t $TAG_COMMIT$NGINX ./nginx #build image nginx
+    - docker container rm -f spring-boot-app || true
+    - docker run -d -p 3000:3000 --name spring-boot-app $TAG_COMMIT$JAR
+    - docker container rm -f nginx-app || true
+    - docker run -d -p 80:80 --name nginx-app $TAG_COMMIT$NGINX
+    - docker image prune -a -f
+    - echo "Build Complete"
+  environment:
+    name: production
+    url: http://$SERVER_HOST
